@@ -32,13 +32,9 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-   /*'GET /Vehiculos': { view: '/vehiculos' },
-   'GET /vehiculos/create': { action: 'create' },
-   'POST /': { view: 'portal/login' },
-   'GET /vehiculos/edit': { action: 'edit' },
-   'PUT /vehiculos/{vehiculo}': { action: 'update' },
-   'DELETE /vehiculos/{vehiculo}': { action: 'destroy' },*/
- 
+  'get /': {
+    view: 'index.ejs'
+  },
     'POST /vehiculo': 'VehiculosController.create',
     'GET /index': 'VehiculosController.show',
     'POST /vehiculo/update/:vehiculoId': 'VehiculosController.edit',

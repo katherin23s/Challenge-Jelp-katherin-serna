@@ -24,7 +24,9 @@ module.exports = {
     placas: {
       type: 'string',
       unique: true,
-      required: true
+      required: true,
+      regex: /[A-Z]{3}-[0-9]{2}-[0-9]{2}/,
+
     },
 
     kilometraje: {

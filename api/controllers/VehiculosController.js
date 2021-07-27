@@ -57,10 +57,11 @@ module.exports = {
 
         //Obtener kilometraje anterior
         var vehiculo = await vehiculos.findOne(id);
-        var kilometrajeNuevo = datos.kilometraje;
+        //Si kilometraje existe toma valor nuevo, si no toma kilometraje anterior.
+        var kilometrajeNuevo = (datos.kilometraje) ? datos.kilometraje : vehiculo.kilometraje;
 
         //Comparar kilometraje actual con anterior
-        if (kilometrajeNuevo > vehiculo.kilometraje) {
+        if (kilometrajeNuevo >= vehiculo.kilometraje) {
             var vehiculoActualizado = await vehiculos.updateOne({ id: id }).set(datos);
             return res.json(vehiculoActualizado);
         } else {

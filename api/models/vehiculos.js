@@ -12,13 +12,17 @@ module.exports = {
   identity: 'vehiculos',
   attributes: {
     marca: {
-      type: 'string'
+      type: 'string',
+      required: true,
     },
     modelo: {
-      type: 'string'
+      type: 'string',
+      required: true,
     },
     ano: {
-      type: 'number'
+      type: 'number',
+      max: new Date().getFullYear(),
+      min: 1940,
     },
 
     placas: {
@@ -30,13 +34,13 @@ module.exports = {
     },
 
     kilometraje: {
-      type: 'number'
+      type: 'number',
     },
 
     NoSerie: {
       type: 'string',
       unique: true,
-      required: true
+      required: true,
     },
   },
 

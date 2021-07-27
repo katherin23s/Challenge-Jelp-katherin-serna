@@ -54,8 +54,19 @@ module.exports = {
             kilometraje: req.body.kilometraje,
             NoSerie: req.body.NoSerie,
         };
-        var vehiculoActualizado = await vehiculos.updateOne({ id: id }).set(datos);
-        return res.json(vehiculoActualizado);
+
+        //Obtener kilometraje anterior
+        var vehiculo = await vehiculos.findOne(id);
+        var kilometrajeNuevo = datos.kilometraje;
+
+        //Comparar kilometraje actual con anterior
+        if (kilometrajeNuevo > vehiculo.kilometraje) {
+            var vehiculoActualizado = await vehiculos.updateOne({ id: id }).set(datos);
+            return res.json(vehiculoActualizado);
+        } else {
+            return res.status(400).json({ error: 'Kilometraje ingresado debe ser mayor al anterior' });
+        }
+
     },
 
     //ELIMINAR UN VEHICULO
@@ -64,6 +75,7 @@ module.exports = {
         var vehiculoEliminar = await vehiculos.archiveOne({ id: id })
         return res.json(vehiculoEliminar);
     },
+
 
     //};
 };

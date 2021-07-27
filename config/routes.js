@@ -33,14 +33,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  //Mostrar vehiculos
-  //  'GET /index': 'VehiculosController.index',
-
-  //  'GET /list': 'VehiculosController.list',
 
   //MOSTRAR VEHICULOS
   'GET /vehiculos': 'VehiculosController.find',
 
+  //MOSTRAR VEHICULO
   'GET /vehiculos/:id': 'VehiculosController.findOne',
 
   //CREAR UN NUEVO VEHICULO

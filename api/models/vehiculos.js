@@ -8,29 +8,33 @@
 const VehiculosController = require("../controllers/VehiculosController");
 
 module.exports = {
- // tableName: 'Vehiculos',
-  identity:'vehiculos',
+  // tableName: 'Vehiculos',
+  identity: 'vehiculos',
   attributes: {
-    marca:{
-      type:'string'
+    marca: {
+      type: 'string'
     },
-    modelo:{
-      type:'string'
+    modelo: {
+      type: 'string'
     },
-    ano:{
-      type:'number'
-    },
-
-    placas:{
-      type:'string'
+    ano: {
+      type: 'number'
     },
 
-    kilometraje:{
-      type:'number'
+    placas: {
+      type: 'string',
+      unique: true,
+      required: true
     },
 
-    NoSerie:{
-      type:'string'
+    kilometraje: {
+      type: 'number'
+    },
+
+    NoSerie: {
+      type: 'string',
+      unique: true,
+      required: true
     },
   },
 

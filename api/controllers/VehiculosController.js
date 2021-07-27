@@ -5,8 +5,66 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-module.exports = {
-  
+const Vehiculos = require("../models/Vehiculos");
 
+module.exports = {
+
+    //MOSTRAR VEHICULOS
+    find: async function (req, res) {
+        var listaVehiculos = await vehiculos.find();
+        return res.json(listaVehiculos);
+    },
+
+
+    //MOSTRAR VEHICULO
+    findOne: async function (req, res) {
+        var id = req.param('id');
+        var vehiculo = await vehiculos.findOne(id);
+        return res.json(vehiculo);
+    },
+
+
+    //CREAR UN NUEVO REGISTRO
+    create: async function (req, res) {
+
+        //Obtener datos
+        var datos = {
+            marca: req.body.marca,
+            modelo: req.body.modelo,
+            ano: req.body.ano,
+            placas: req.body.placas,
+            kilometraje: req.body.kilometraje,
+            NoSerie: req.body.NoSerie,
+        };
+
+        //Crear vehiculo
+        var vehiculo = await vehiculos.create(datos).fetch();
+        return res.json(vehiculo);
+
+    },
+
+    //MODIFICAR UN REGISTRO
+    update: async function (req, res) {
+        var id = req.param('id');
+        var datos = {
+            marca: req.body.marca,
+            modelo: req.body.modelo,
+            ano: req.body.ano,
+            placas: req.body.placas,
+            kilometraje: req.body.kilometraje,
+            NoSerie: req.body.NoSerie,
+        };
+        var vehiculoActualizado = await vehiculos.updateOne({ id: id }).set(datos);
+        return res.json(vehiculoActualizado);
+    },
+
+    //ELIMINAR UN VEHICULO
+    destroy: async function (req, res) {
+        var id = req.param('id');
+        var vehiculoEliminar = await vehiculos.archiveOne({ id: id })
+        return res.json(vehiculoEliminar);
+    },
+
+    //};
 };
 

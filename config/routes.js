@@ -19,8 +19,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-
+  //'/': { view: 'pages/homepage' },
+  // '/index': { view: 'pages/index'},
 
   /***************************************************************************
   *                                                                          *
@@ -32,12 +32,25 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-  'get /': {
-    view: 'index.ejs'
-  },
-    'POST /vehiculo': 'VehiculosController.create',
-    'GET /index': 'VehiculosController.show',
-    'POST /vehiculo/update/:vehiculoId': 'VehiculosController.edit',
-    'GET /vehiculo/delete/:vehiculoId': 'VehiculosController.delete',
+
+  //Mostrar vehiculos
+  //  'GET /index': 'VehiculosController.index',
+
+  //  'GET /list': 'VehiculosController.list',
+
+  //MOSTRAR VEHICULOS
+  'GET /vehiculos': 'VehiculosController.find',
+
+  'GET /vehiculos/:id': 'VehiculosController.findOne',
+
+  //CREAR UN NUEVO VEHICULO
+  'POST /vehiculos': 'VehiculosController.create',
+
+  //MODIFICAR UN VEHICULO
+  'PATCH /vehiculos/:id': 'VehiculosController.update',
+
+  //ELIMINAR UN VEHICULO
+  'DELETE /vehiculos/:id': 'VehiculosController.destroy',
+
 
 };

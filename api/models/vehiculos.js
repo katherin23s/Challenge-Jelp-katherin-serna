@@ -5,8 +5,11 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
+const VehiculosController = require("../controllers/VehiculosController");
+
 module.exports = {
-  tableName: 'Vehiculos',
+ // tableName: 'Vehiculos',
+  identity:'vehiculos',
   attributes: {
     marca:{
       type:'string'
